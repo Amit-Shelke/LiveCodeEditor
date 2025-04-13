@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: #454545;
+    color: #fff;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #111;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00ffc3;
+    letter-spacing: 1px;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #00ffc3;
+}
+
+.download-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin: 10px 30px;
+}
+
+.download-buttons button {
+    background: #00ffc3;
+    color: #000;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.download-buttons button:hover {
+    background: #00c0a0;
+    transform: scale(1.05);
+}
+
+.container {
+    width: 100%;
+    height: calc(100vh - 130px); /* Adjust for header + buttons */
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.left, .right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+textarea {
+    flex: 1;
+    background: #1f1f1f;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    resize: vertical;
+    border-radius: 6px;
+}
+
+iframe {
+    flex: 1;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+}
+
+label i {
+    margin-right: 8px;
+    color: #00ffc3;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    background: #000;
+    height: 30px;
+    padding: 0 10px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 4px;
+}

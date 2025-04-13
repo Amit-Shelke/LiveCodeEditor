@@ -1,0 +1,172 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live code editor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/180d9bf8aa.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <label <i class="fa-brands fa-html5"></i> HTML</label>
+            <textarea id="html-code" onkeyup="run()"></textarea>
+            <label <i class="fa-brands fa-css3-alt"></i> CSS</label>
+            <textarea id="css-code" onkeyup="run()"></textarea>
+            <label <i class="fa-brands fa-js"></i> JavaScript</label>
+            <textarea id="js-code" onkeyup="run()"></textarea>
+        </div>
+        <div class="right">
+            <label <i class="fa-solid fa-play"></i> Output</label>
+            <iframe id="output"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function run() {
+            let htmlCode = document.getElementById("html-code").value;
+            let cssCode = document.getElementById("css-code").value;
+            let JsCode = document.getElementById("js-code").value;
+            let Output = document.getElementById("Output");
+
+            output.contentDocument.body.innerHTML = htmlCode + "<style>" + cssCode + "</style>";
+            output.contentWindow.eval(JsCode);
+        }
+    </script>
+
+</body>
+
+</html> -->
+
+
+
+
+
+
+
+
+<!--
+    Copyright 2025 [Your Name or Your Company]
+    All rights reserved.
+
+    This file is part of Amits Editor.
+    Unauthorized copying of this file, via any medium is strictly prohibited.
+-->
+    
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live code editor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/180d9bf8aa.js" crossorigin="anonymous"></script>
+
+    <!-- jsPDF (for PDF export) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- html-docx.js (for Word export) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<script src="https://unpkg.com/html-docx-js/dist/html-docx.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="logo">Amits Editor</div>
+        <nav>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Sign In</a>
+        </nav>
+    </header>
+
+    <div class="download-buttons">
+        <button onclick="downloadAsPDF()">Download as PDF</button>
+        <button onclick="downloadAsWord()">Download as Word</button>
+    </div>
+    
+
+    <div class="container"> 
+        <div class="left">
+            <label><i class="fa-brands fa-html5"></i> HTML</label>
+            <textarea id="html-code" onkeyup="run()"></textarea>
+            <label><i class="fa-brands fa-css3-alt"></i> CSS</label>
+            <textarea id="css-code" onkeyup="run()"></textarea>
+            <label><i class="fa-brands fa-js"></i> JavaScript</label>
+            <textarea id="js-code" onkeyup="run()"></textarea>
+        </div>
+        <div class="right">
+            <label><i class="fa-solid fa-play"></i> Output</label>
+            <iframe id="output"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function run() {
+            let htmlCode = document.getElementById("html-code").value;
+            let cssCode = document.getElementById("css-code").value;
+            let jsCode = document.getElementById("js-code").value;
+            let output = document.getElementById("output");
+
+            output.contentDocument.body.innerHTML = htmlCode + "<style>" + cssCode + "</style>";
+            output.contentWindow.eval(jsCode);
+        }
+    </script>
+
+
+
+<script>
+    async function downloadAsPDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        const htmlCode = document.getElementById("html-code").value;
+        const cssCode = document.getElementById("css-code").value;
+        const jsCode = document.getElementById("js-code").value;
+
+        let content = `
+        HTML Code:\n${htmlCode}\n\n
+        CSS Code:\n${cssCode}\n\n
+        JavaScript Code:\n${jsCode}
+        `;
+
+        doc.setFont("Courier");
+        doc.setFontSize(10);
+        doc.text(content, 10, 10);
+        doc.save("code_output.pdf");
+    }
+
+    function downloadAsWord() {
+        const htmlCode = document.getElementById("html-code").value;
+        const cssCode = document.getElementById("css-code").value;
+        const jsCode = document.getElementById("js-code").value;
+
+        const html = `
+            <html>
+                <head><meta charset="utf-8"></head>
+                <body>
+                    <h2>HTML Code</h2>
+                    <pre>${htmlCode.replace(/</g, '&lt;')}</pre>
+                    <h2>CSS Code</h2>
+                    <pre>${cssCode.replace(/</g, '&lt;')}</pre>
+                    <h2>JavaScript Code</h2>
+                    <pre>${jsCode.replace(/</g, '&lt;')}</pre>
+                </body>
+            </html>
+        `;
+
+        const blob = htmlDocx.asBlob(html, { orientation: 'portrait' });
+        saveAs(blob, 'code_output.docx');
+    }
+</script>
+
+
+</body>
+
+</html>
